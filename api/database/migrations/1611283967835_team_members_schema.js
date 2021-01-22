@@ -9,7 +9,7 @@ class TeamMembersSchema extends Schema {
       table.increments()
       table.integer('user_id').unsigned().notNullable().references('id').inTable('users')
       table.integer('team_id').unsigned().notNullable().references('id').inTable('teams')
-      table.integer('boss_id').unsigned().notNullable().references('id').inTable('users')
+      table.integer('boss_id').unsigned().references('id').inTable('users')
       table.timestamps()
     })
   }
