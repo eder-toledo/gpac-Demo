@@ -13,6 +13,7 @@ class CandidateSchema extends Schema {
       table.string('title')
       table.string('phone').unique()
       table.string('email').unique()
+      table.integer('registered_by').notNullable().references('id').inTable('users')
       table.timestamps()
     })
   }
