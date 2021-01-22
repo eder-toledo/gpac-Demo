@@ -1,8 +1,8 @@
 import LeftMenu from './components/LeftMenu';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
+import ListCandidates from './components/ListCandidates';
 import './App.css';
-import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 
 
@@ -25,6 +25,7 @@ function App() {
         </Grid>
         <Grid>
           <SearchBar />
+          <ListCandidates />
         </Grid>
       </Grid>
       <Footer />

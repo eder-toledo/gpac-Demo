@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,22 +19,33 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LetfMenu() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [time, setTime] = useState(new Date());
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+  setInterval(() => {
+    setTime(new Date());
+  }, 1000);
 
   return (
-    <List
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      className={classes.root}
-    >
-      <ListItem button onClick={handleClick}>
-        <ListItemIcon></ListItemIcon>
-        <ListItemText primary="Dashboard" />
-      </ListItem>
-    </List>
+    <Box>
+      <List
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+        className={classes.root}
+      >
+        <ListItem button>
+          <ListItemIcon></ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItem>
+      </List>
+      <Box>
+        <p>{time.toLocaleDateString("en-us", { weekday: "long" })}</p>
+        <p>
+          {time.toLocaleDateString("en-us", { month: "short" })}{" "}
+          {time.toLocaleDateString("en-us", { day: "numeric" })}th
+        </p>
+        <p>{time.toLocaleTimeString([], { timeStyle: "short" })}</p>
+        <p>Actual time</p>
+      </Box>
+    </Box>
   );
 }
