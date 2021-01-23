@@ -1,12 +1,16 @@
+import React, { useState } from "react";
 import LeftMenu from './components/LeftMenu';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
-import ListCandidates from './components/ListCandidates';
+import MarketPage from './pages/market';
+import MapPage from './pages/map';
 import './App.css';
 import Grid from '@material-ui/core/Grid'
 
 
 function App() {
+  const [pageRender, setPageRender] = useState(MapPage);
+
   return (
     <div className="App">
       <Grid
@@ -17,15 +21,14 @@ function App() {
         alignItems="flex-start"
         alignContent="stretch"
         wrap="nowrap"
-
       >
 
         <Grid item xs={2}>
           <LeftMenu />
         </Grid>
-        <Grid>
+        <Grid item xs={10}>
           <SearchBar />
-          <ListCandidates />
+          {pageRender}
         </Grid>
       </Grid>
       <Footer />
