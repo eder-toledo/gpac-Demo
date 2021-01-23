@@ -36,7 +36,7 @@ class User extends Model {
   }
 
   candidates() {
-    return this.hasMany('App/Models/Candidate')
+    return this.hasMany('App/Models/Candidate', 'id', 'registered_by')
   }
 
   assignedUsers() {
