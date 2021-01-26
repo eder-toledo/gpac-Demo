@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid'
 
 function App() {
 
-  const [pageRender, setPageRender] = useState(MarketPage);
+  const [pageRender, setPageRender] = useState(MapPage);
 
   return (
     <div className="App">

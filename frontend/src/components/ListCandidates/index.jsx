@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#FFFFFF",
   },
 }));
-
+console.log("render");
 export default function ListCandidates() {
   const classes = useStyles();
   const { candidates } = useCandidates();
@@ -51,7 +51,7 @@ export default function ListCandidates() {
           ) : (
             candidates.map((candidate) => {
               return (
-                <TableRow className={classes.root}>
+                <TableRow className={classes.root} key={candidate.id}>
                   <TableCell className={classes.td}>
                     <Avatar variant="text" color="default"></Avatar>
                   </TableCell>

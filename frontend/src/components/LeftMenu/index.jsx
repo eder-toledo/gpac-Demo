@@ -95,7 +95,7 @@ export default function LetfMenu() {
       >
         {menuElements.map((menuElement) => {
           return (
-            <ListItem button>
+            <ListItem button key={menuElement.name}>
               <ListItemIcon>
                 <Icon>
                   <img src={"/assets/" + menuElement.icon} />
