@@ -2,7 +2,7 @@ import { Typography, Button } from "@material-ui/core";
 import React from "react";
 import ListCandidates from "../../components/ListCandidates";
 
-export default function index() {
+export default function Index() {
   return (
     <div>
       <Typography variant="h4">

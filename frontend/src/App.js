@@ -5,11 +5,13 @@ import SearchBar from './components/SearchBar';
 import MarketPage from './pages/market';
 import MapPage from './pages/map';
 import './App.css';
+import { CandidatesProvider } from './context/candidates-context';
 import Grid from '@material-ui/core/Grid'
 
 
 function App() {
-  const [pageRender, setPageRender] = useState(MapPage);
+
+  const [pageRender, setPageRender] = useState(MarketPage);
 
   return (
     <div className="App">
@@ -36,4 +38,4 @@ function App() {
   );
 }
 
-export default App;
+export default () => <CandidatesProvider><App></App></CandidatesProvider>;
