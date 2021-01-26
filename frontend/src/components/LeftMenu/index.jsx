@@ -50,27 +50,27 @@ const menuElements = [
   },
   {
     name: "Job Orders",
-    icon: "Group 29.svg",
+    icon: "Group 2.svg",
   },
   {
     name: "Market",
-    icon: "Group 166.svg",
-  },
-  {
-    name: "Companies",
     icon: "Group 573.svg",
   },
   {
+    name: "Companies",
+    icon: "Group 2.svg",
+  },
+  {
     name: "S. Projects",
-    icon: "Group 575.svg",
+    icon: "Group 2.svg",
   },
   {
     name: "Map",
-    icon: "Group 111.svg",
+    icon: "Group 575.svg",
   },
   {
     name: "Tasks Tool",
-    icon: "Group 112.svg",
+    icon: "Group 2.svg",
   },
   {
     name: "Sendouts",
