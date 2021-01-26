@@ -5,10 +5,9 @@ import { List, ListItem, Typography, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: "#34343C 0% 0% no-repeat padding-box",
-    boxShadow: "0px 3px 6px #00000005",
-    borderRadius: "5px",
+    background: "#20232B 0% 0% no-repeat padding-box",
     opacity: 1,
+    color: "#FFFFFF",
   },
 }));
 console.log("render");
@@ -17,27 +16,46 @@ export default function MapListCandidates() {
   const { candidates } = useCandidates();
 
   return (
-    <List>
-      {candidates === null ? (
-        <span>Loading...</span>
-      ) : (
-        candidates.map((candidate) => {
-          return (
-            <Grid container spacing={0}>
-              <Grid item xs={4}>
+    <Grid container spacing={0} className={classes.root}>
+      <Grid item xs={4}>
+        <List>
+          {candidates === null ? (
+            <span>Loading...</span>
+          ) : (
+            candidates.map((candidate) => {
+              return (
                 <ListItem key={candidate.id}>
-                  <Typography>Company</Typography>
-                  <Typography>Aurora Coding</Typography>
-                  <Typography>Development</Typography>
+                  <Grid container spacing={0}>
+                    <Grid item xs={7}>
+                      <Typography variant="subtitle2">Company</Typography>
+                      <Typography variant="subtitle1" display="block">
+                        {candidate.first_name} {candidate.last_name}
+                      </Typography>
+                      <Typography variant="subtitle2">
+                        {candidate.title}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={5}>
+                      <Typography variant="body2" align="right">
+                        Places
+                      </Typography>
+                      <Typography variant="body2" align="right">
+                        12345
+                      </Typography>
+                      <Typography variant="body2" align="right">
+                        {candidate.phone}
+                      </Typography>
+                    </Grid>
+                  </Grid>
                 </ListItem>
-              </Grid>
-              <Grid item xs={8}>
-                Map
-              </Grid>
-            </Grid>
-          );
-        })
-      )}
-    </List>
+              );
+            })
+          )}
+        </List>
+      </Grid>
+      <Grid item xs={8}>
+        Map
+      </Grid>
+    </Grid>
   );
 }
