@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useCandidates } from "../../context/candidates-context";
 import { List, ListItem, Typography, Grid } from "@material-ui/core";
+import MapCandidates from "../MapCandidates";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,8 +10,13 @@ const useStyles = makeStyles((theme) => ({
     opacity: 1,
     color: "#FFFFFF",
   },
+  element: {
+    "&:hover": {
+      background: "#323C4A",
+    },
+  },
 }));
-console.log("render");
+
 export default function MapListCandidates() {
   const classes = useStyles();
   const { candidates } = useCandidates();
@@ -24,7 +30,7 @@ export default function MapListCandidates() {
           ) : (
             candidates.map((candidate) => {
               return (
-                <ListItem key={candidate.id}>
+                <ListItem className={classes.element} key={candidate.id}>
                   <Grid container spacing={0}>
                     <Grid item xs={7}>
                       <Typography variant="subtitle2">Company</Typography>
@@ -54,7 +60,7 @@ export default function MapListCandidates() {
         </List>
       </Grid>
       <Grid item xs={8}>
-        Map
+        <MapCandidates />
       </Grid>
     </Grid>
   );

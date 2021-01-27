@@ -41,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
   box: {
     background: "#1A1C21 0% 0% no-repeat padding-box",
   },
+  element: {
+    "&:hover": {
+      background: "#FF3939",
+    },
+  },
 }));
 
 const menuElements = [
@@ -95,7 +100,7 @@ export default function LetfMenu() {
       >
         {menuElements.map((menuElement) => {
           return (
-            <ListItem button key={menuElement.name}>
+            <ListItem className={classes.element} button key={menuElement.name}>
               <ListItemIcon>
                 <Icon>
                   <img src={"/assets/" + menuElement.icon} />

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#FFFFFF",
   },
 }));
-console.log("render");
+
 export default function ListCandidates() {
   const classes = useStyles();
   const { candidates } = useCandidates();
