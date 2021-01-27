@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import LeftMenu from './components/LeftMenu';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
-import MarketPage from './pages/market';
-import MapPage from './pages/map';
+//import MarketPage from './pages/market';
+//import MapPage from './pages/map';
+import NewPage from './pages/new';
 import './App.css';
 import { CandidatesProvider } from './context/candidates-context';
 import Grid from '@material-ui/core/Grid'
@@ -11,7 +12,7 @@ import Grid from '@material-ui/core/Grid'
 
 function App() {
 
-  const [pageRender, setPageRender] = useState(MapPage);
+  const [pageRender, setPageRender] = useState(NewPage);
 
   return (
     <div className="App">
@@ -30,7 +31,7 @@ function App() {
         </Grid>
         <Grid item xs={10}>
           <SearchBar />
-          {pageRender}
+          <NewPage />
         </Grid>
       </Grid>
       <Footer />
