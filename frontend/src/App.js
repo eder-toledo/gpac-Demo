@@ -3,7 +3,7 @@ import LeftMenu from './components/LeftMenu';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 //import MarketPage from './pages/market';
-//import MapPage from './pages/map';
+import MapPage from './pages/map';
 import NewPage from './pages/new';
 import './App.css';
 import { CandidatesProvider } from './context/candidates-context';
@@ -31,7 +31,7 @@ function App() {
         </Grid>
         <Grid item xs={10}>
           <SearchBar />
-          <NewPage />
+          <MapPage />
         </Grid>
       </Grid>
       <Footer />
