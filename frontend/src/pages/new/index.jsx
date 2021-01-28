@@ -20,8 +20,10 @@ export default function Index() {
     company: "",
     status_process: "",
     relocation: "",
-    registered_by: 2,
+    registered_by: 1,
   });
+
+  const [places, setPlaces] = useState({});
 
   const handleInputChange = (event) => {
     setDataform({
@@ -30,13 +32,27 @@ export default function Index() {
     });
   };
 
+  const searchPlaceMapbox = (event) => {
+    if (event.target.value.length > 3) {
+      fetch(
+        "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
+          event.target.value +
+          ".json?limit=5&access_token=pk.eyJ1IjoiZXRvbGVkbyIsImEiOiJja2tlOGdnOW0wNGZpMnZxdHNuZHN2aTBxIn0.8Ks9ntap65z15hF-Xr2b1Q"
+      )
+        .then((response) => response.json())
+        .then((data) => setPlaces(data.features));
+    } else {
+      setPlaces({});
+    }
+  };
+
   const sendData = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dataForm),
     };
-    fetch("http://127.0.0.1:3333/candidates?registered_by=1", requestOptions)
+    fetch("http://127.0.0.1:3333/candidates", requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Not 2xx response");
@@ -243,18 +259,41 @@ export default function Index() {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                select
-                SelectProps={{
-                  native: true,
-                }}
                 fullWidth
-                onChange={handleInputChange}
-                name="location"
-              >
-                <option value=""></option>
-                <option value="Value A">Value A</option>
-                <option value="Value B">Value B</option>
-              </TextField>
+                onChange={searchPlaceMapbox}
+                name="places"
+              />
+              {places.length > 0 ? (
+                <TextField
+                  label="Places"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  select
+                  SelectProps={{
+                    native: true,
+                  }}
+                  fullWidth
+                  onChange={handleInputChange}
+                  name="location"
+                >
+                  <option value="">Select location by list place</option>
+                  {places.map((place) => {
+                    const placeString = {
+                      name: place.place_name,
+                      latlng: place.center,
+                    };
+                    return (
+                      <option value={JSON.stringify(placeString)}>
+                        {place.place_name}
+                      </option>
+                    );
+                  })}
+                </TextField>
+              ) : (
+                ""
+              )}
+
               <TextField
                 label="Company"
                 InputLabelProps={{

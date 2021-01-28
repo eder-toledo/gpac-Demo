@@ -43,10 +43,12 @@ export default function MapListCandidates() {
                     </Grid>
                     <Grid item xs={5}>
                       <Typography variant="body2" align="right">
-                        Places
+                        {candidate.location === null
+                          ? ""
+                          : JSON.parse(candidate.location).name}
                       </Typography>
                       <Typography variant="body2" align="right">
-                        12345
+                        {candidate.wish_salary}
                       </Typography>
                       <Typography variant="body2" align="right">
                         {candidate.phone}

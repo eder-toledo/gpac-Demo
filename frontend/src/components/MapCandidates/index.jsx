@@ -35,15 +35,23 @@ export default function Index() {
     candidates === null
       ? ""
       : candidates.map((candidate) => {
-          const latlng = JSON.parse(candidate.location);
-          return (
-            <Marker coordinates={latlng} anchor="bottom" key={candidate.id}>
-              <img className={classes.marker} src="/assets/marker.svg" />
-              <p className={classes.textMarker}>
-                {candidate.first_name[0] + candidate.last_name[0]}
-              </p>
-            </Marker>
-          );
+          const marker =
+            candidate.location === null ? (
+              ""
+            ) : (
+              <Marker
+                coordinates={JSON.parse(candidate.location).latlng}
+                anchor="bottom"
+                key={candidate.id}
+              >
+                <img className={classes.marker} src="/assets/marker.svg" />
+                <p className={classes.textMarker}>
+                  {candidate.first_name[0] + candidate.last_name[0]}
+                </p>
+              </Marker>
+            );
+
+          return marker;
         });
 
   return (
