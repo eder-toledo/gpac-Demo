@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button, Tabs, Tab } from "@material-ui/core/";
+import { useCandidates } from "../../context/candidates-context";
+import IndexPage from "../index";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 
 export default function Index() {
+  const { candidates, setCandidates, selectedUser } = useCandidates();
   const [dataForm, setDataform] = useState({
     first_name: "",
     last_name: "",
@@ -20,7 +23,7 @@ export default function Index() {
     company: "",
     status_process: "",
     relocation: "",
-    registered_by: 1,
+    registered_by: selectedUser === null ? "" : selectedUser.id,
   });
 
   const [places, setPlaces] = useState({});
@@ -59,12 +62,15 @@ export default function Index() {
         }
         return response.json();
       })
-      .then((data) => console.log(data))
+      .then((data) => setCandidates([...candidates, data]))
       .catch((error) => {
         console.log("error", error);
       });
   };
 
+  if (selectedUser === null) {
+    return <IndexPage />;
+  }
   return (
     <Container fixed maxWidth="md">
       <Typography variant="h4" color="initial">

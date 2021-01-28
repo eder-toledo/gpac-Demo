@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useCandidates } from "../../context/candidates-context";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -48,12 +49,16 @@ const useStyles = makeStyles((theme) => ({
       background: "#FF3939",
     },
   },
+  link: {
+    textDecoration: "none",
+  },
 }));
 
 const menuElements = [
   {
     name: "Dashboard",
     icon: "Group 2.svg",
+    url: "/",
   },
   {
     name: "Job Orders",
@@ -88,6 +93,7 @@ const menuElements = [
 ];
 
 export default function LetfMenu() {
+  const { selectedUser } = useCandidates();
   const classes = useStyles();
   const [time, setTime] = useState(new Date());
 
@@ -97,15 +103,16 @@ export default function LetfMenu() {
 
   return (
     <Box className={classes.box}>
+      <img width="55px" src="/assets/Group 29.svg" />
       <List
         component="nav"
         aria-labelledby="nested-list-subheader"
         className={classes.root}
       >
         {menuElements.map((menuElement) => {
-          const link = menuElement.url === null ? "/" : menuElement.url;
+          const link = menuElement.url === null ? "#" : menuElement.url;
           return (
-            <Link to={link} key={menuElement.name}>
+            <Link className={classes.link} to={link} key={menuElement.name}>
               <ListItem className={classes.element} button>
                 <ListItemIcon>
                   <Icon>

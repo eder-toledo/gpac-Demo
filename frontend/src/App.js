@@ -17,8 +17,6 @@ import {
 
 function App() {
 
-  const [pageRender, setPageRender] = useState(NewPage);
-
   return (
     <div className="App">
       <Router>
@@ -42,9 +40,9 @@ function App() {
               <Route exact path="/">
                 <Index />
               </Route>
-              <Route path="/market/:id" component={MarketPage} />
-              <Route path="/map/:id" component={MapPage} />
-              <Route path="/new/:id" component={NewPage} />
+              <Route path="/market" component={MarketPage} />
+              <Route path="/map" component={MapPage} />
+              <Route path="/new" component={NewPage} />
             </Switch>
           </Grid>
         </Grid>
