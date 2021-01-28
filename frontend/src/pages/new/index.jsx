@@ -20,6 +20,7 @@ export default function Index() {
     company: "",
     status_process: "",
     relocation: "",
+    registered_by: 2,
   });
 
   const handleInputChange = (event) => {
