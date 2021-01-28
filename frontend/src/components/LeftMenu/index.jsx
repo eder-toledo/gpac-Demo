@@ -7,6 +7,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Box from "@material-ui/core/Box";
 import Icon from "@material-ui/core/Icon";
 
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -60,6 +62,7 @@ const menuElements = [
   {
     name: "Market",
     icon: "Group 573.svg",
+    url: "/market",
   },
   {
     name: "Companies",
@@ -72,6 +75,7 @@ const menuElements = [
   {
     name: "Map",
     icon: "Group 575.svg",
+    url: "/map",
   },
   {
     name: "Tasks Tool",
@@ -99,18 +103,25 @@ export default function LetfMenu() {
         className={classes.root}
       >
         {menuElements.map((menuElement) => {
+          const link = menuElement.url === null ? "/#" : menuElement.url;
           return (
-            <ListItem className={classes.element} button key={menuElement.name}>
-              <ListItemIcon>
-                <Icon>
-                  <img src={"/assets/" + menuElement.icon} />
-                </Icon>
-              </ListItemIcon>
-              <ListItemText
-                className={classes.text}
-                primary={menuElement.name}
-              />
-            </ListItem>
+            <Link to={link}>
+              <ListItem
+                className={classes.element}
+                button
+                key={menuElement.name}
+              >
+                <ListItemIcon>
+                  <Icon>
+                    <img src={"/assets/" + menuElement.icon} />
+                  </Icon>
+                </ListItemIcon>
+                <ListItemText
+                  className={classes.text}
+                  primary={menuElement.name}
+                />
+              </ListItem>
+            </Link>
           );
         })}
       </List>
