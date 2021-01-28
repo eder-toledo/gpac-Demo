@@ -103,14 +103,10 @@ export default function LetfMenu() {
         className={classes.root}
       >
         {menuElements.map((menuElement) => {
-          const link = menuElement.url === null ? "/#" : menuElement.url;
+          const link = menuElement.url === null ? "/" : menuElement.url;
           return (
-            <Link to={link}>
-              <ListItem
-                className={classes.element}
-                button
-                key={menuElement.name}
-              >
+            <Link to={link} key={menuElement.name}>
+              <ListItem className={classes.element} button>
                 <ListItemIcon>
                   <Icon>
                     <img src={"/assets/" + menuElement.icon} />
